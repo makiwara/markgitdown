@@ -6,6 +6,15 @@ Status
 Evolving.
 
 
+TODO
+----
+* find base to work on
+* build deep tree structure
+* fix links
+* make a decent html
+* simple handle to reload
+
+
 
 Authors & license
 -----------------
