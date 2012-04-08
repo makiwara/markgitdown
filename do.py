@@ -17,7 +17,8 @@ parser.add_option('-f', dest='force', action="store_true", default=False, help='
 (options, args) = parser.parse_args()
 
 # check git & update only if needed
-if options.force or git.pull(options.source):
+need_refresh = git.pull(options.source)
+if options.force or need_refresh:
     # reset state
     prepare.empty_target(options.target)
     prepare.init_template(options.resources)
