@@ -1,4 +1,15 @@
-DirectoryIndex README.md contentx.md index.html index.htm
+DirectoryIndex contents.md README.md index.html index.htm
 AddType 'text/html; charset=utf-8' md
 AddType 'text/html; charset=utf-8' mdown
 AddType 'text/html; charset=utf-8' markdown
+
+<Files ~ "^.(htaccess|htpasswd)$">
+deny from all
+</Files>
+
+AuthUserFile /home/makiwara/waka.humanemagica.com/.htpasswd
+AuthGroupFile /dev/null
+AuthName "Humanemagica Alumni/Disciple credentials, please"
+AuthType Basic
+require valid-user 
+order deny,allow
