@@ -9,15 +9,18 @@ import lib.templite
 md = markdown.Markdown(extensions=['codehilite'])
 
 
-def publish_markdown(source, target):
+def publish_markdown(source, target, name):
     inf = open(source)
-    content = md.convert(inf.read())
+    source_content = inf.read()
     inf.close()
+    content = md.convert(source_content)
+    title = find_title(source_content)
+    if not title: title = name
     outf = open(target, 'w')
-    outf.write(wrap_template(content))
+    outf.write(wrap_template(content, title))
     outf.close()
 
-def passthru(source, target):
+def passthru(source, target, *a, **b):
     shutil.copy(source, target) 
 
 DEFAULT = passthru
@@ -34,8 +37,8 @@ def init_template(resource):
     inf = open(resource+"/"+TEMPLATE)
     T = lib.templite.Templite(inf.read(), start="{{", end="}}")
 
-def wrap_template(content):
-    return T.render(dict(content=content))
+def wrap_template(content, title):
+    return T.render(dict(content=content, title=title))
 
 
 def empty_target(target):
@@ -59,10 +62,24 @@ def push_file(source, target, name):
         parser = EXTENSIONS[ext[1:]]
     except KeyError:
         parser = DEFAULT
-    parser(sourcename, targetname)
+    parser(sourcename, targetname, name)
     
 def push_resources(res, target):
     for name in os.listdir(res):
         if name != TEMPLATE:
             shutil.copy(res+"/"+name, target)
+            
+def find_title(content):
+    lines = content.splitlines()
+    if len(lines) == 0:
+        return None
+    first_line = lines[0].strip()
+    if first_line.startswith('#'):
+        return first_line.lstrip('#')
+    if len(lines) == 1:
+        return None
+    second_line = lines[1].strip()
+    if second_line and (all(c == '=' for c in second_line) or (all(c == '-' for c in second_line))):
+        return first_line
+    return None    
         

@@ -16,7 +16,6 @@ parser.add_option('-r', dest='resources', default='./resource', help='Template a
 
 # TODO check git & update only if needed
 
-
 # reset state
 prepare.empty_target(options.target)
 prepare.init_template(options.resources)
