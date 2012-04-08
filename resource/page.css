@@ -3,7 +3,6 @@ body {
     background:#fdf6e3;
     color:#93a1a1;
     text-shadow: 0 1px 1px rgba(255,255,255,0.75);
-    height:100%;
 }
 body, td {
     font-family:Helvetica, Arial, sans-serif;
@@ -81,3 +80,45 @@ a:hover, a:active { color:#dc322f; text-shadow:0 1px 1px #fff; text-decoration:n
 .footer { font-size:13px; padding: 10px 20px; line-height:1.4em;}    
 .footer a:link, .footer a:visited { color:#586e75; text-shadow:0 1px 1px #fff}
 .footer a:hover, .footer a:active { color:#000;}
+
+a.anchor {
+    display:block; float:left;
+    margin-left: -16px;
+    font-size:12px;
+    margin-top:5px;
+}
+a.anchor:link, a.anchor:visited { color:#eee8d5; text-shadow:none;}
+a.anchor:hover, a.anchor:active { color:#000 }
+
+.toc { 
+    float:right; margin: 8px -10px 0 0;
+    border-radius:4px;
+    background:#fdf6e3;
+    box-shadow: inset 0 1px 2px #eee8d5;
+    padding: 10px 10px 0;
+}
+.tocsmall {
+    font-size:13px;
+    border-radius:4px;
+    background:#fdf6e3;
+    color:#93a1a1;
+    padding:3px 8px;
+    margin:-10px -10px -5px;
+    box-shadow: inset 0 1px 2px #eee8d5;
+    cursor:pointer; cursor:hand;
+    float:right;
+}
+.tocsmall:hover {
+    box-shadow: inset 0 0px 2px #93a1a1;
+    color:#839496;
+}
+.tocsmall:active {
+    box-shadow: inset 0 0px 4px #93a1a1;
+    background:#eee8d5;
+    padding-top:4px;
+    padding-bottom:2px;
+}
+.tocbig  { padding-top:5px; clear:both; font-size:13px; max-width:300px;}
+.tocline { margin: .5em 0;}
+.tocline a:link, .tocline a:visited { color:#93a1a1; text-shadow:0 1px 1px #fff }
+.tocline a:hover, .tocline a:active  { color:#073642; text-shadow:0 1px 1px #fff }

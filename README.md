@@ -14,8 +14,8 @@ TODO
 + fix links and provide resources
 + make a decent html
 + extract title from content
-- provide with simple TOC
-- check git and update+rebuild if necessary
++ provide with simple TOC
++ check git and update+rebuild if necessary
 - simple handle to reinvoke
 
 

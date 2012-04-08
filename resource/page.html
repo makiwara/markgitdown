@@ -3,6 +3,17 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Waka &rsaquo; {{title}}</title>
     <link rel="stylesheet" href="page.css" type="text/css" charset="utf-8"/>
+    <script type="text/javascript" charset="utf-8" src="jquery.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(function(){
+            $('.tocsmall').click(function(){
+                if ($('.tocbig').is(":visible"))
+                    $('.tocbig').hide();
+                else
+                    $('.tocbig').show();
+            })
+        })
+    </script>
 </head>
 <body>
     
@@ -14,6 +25,16 @@
 <div class="content">
     <div class="page">
         <div class="upper-shade"></div>
+        {{
+            if len(toc) > 0:
+                emit('<div class="toc">')
+                emit('<div class="tocsmall">Table Of Contents</div>')
+                emit('<div class="tocbig hide">')
+                for row in toc:
+                    emit('<div class="tocline"><a href="#go%s">%s</a></div>' % (str(row[0]), row[1]))
+                emit('</div>')
+                emit('</div>')
+        }}
         {{content}}
     </div>
 </div>
